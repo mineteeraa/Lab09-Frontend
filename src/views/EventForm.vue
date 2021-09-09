@@ -2,39 +2,30 @@
   <div>
     <h1>Create an event</h1>
     <form @submit.prevent="saveEvent">
-      <label>Category</label>
-      <input
+      <BaseInput
         v-model="event.category"
         type="text"
-        placeholder="Category"
-        class="field"
+        label="Category"
       />
       <h3>Name & describe your event</h3>
 
-      <label>Title</label>
-      <input
+      <BaseInput
         v-model="event.title"
         type="text"
-        placeholder="Title"
-        class="field"
+        label="Title"
       />
 
-      <label>Description</label>
-      <input
+      <BaseInput
         v-model="event.description"
         type="text"
-        placeholder="Description"
-        class="field"
+        label="Description"
       />
-
       <h3>Where is your event?</h3>
 
-      <label>Location</label>
-      <input
+      <BaseInput
         v-model="event.location"
         type="text"
-        placeholder="Location"
-        class="field"
+        label="Location"
       />
       <button type="submit">Submit</button>
     </form>
@@ -42,10 +33,16 @@
     <pre>{{ event }}</pre>
   </div>
 </template>
+
 <script>
 import EventService from '@/services/EventService.js'
+import BaseInput from '@/components/BaseInput'
+
 export default {
   inject: ['GStore'],
+  components: {
+    BaseInput
+  },
   data() {
     return {
       event: {
